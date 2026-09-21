@@ -44,34 +44,5 @@ Executes the test suite via npm test.
 
 License
 Distributed under the MIT License. See LICENSE for details.
-
-
----
-
-### Recommended Supplemental Documentation
-
-#### 1. `.gitignore`
-Prevents local environment files, logs, and `node_modules` from being committed to the repository.
-
-```gitignore
-# Dependencies
-node_modules/
-
-# Logs
-logs/
-*.log
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-
-# Environment files
-.env
-.env.local
-.env.development
-.env.test
-.env.production
-
-# IDE & OS cache
-.DS_Store
 .vscode/
 .idea/
