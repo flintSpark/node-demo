@@ -1,48 +1,44 @@
-Markdown
 # Node Demo
 
-![Node.js CI](https://github.com/flintSpark/node-demo/actions/workflows/node.js.yml/badge.svg)
+[![Node.js CI](https://github.com/flintSpark/node-demo/actions/workflows/node.js.yml/badge.svg)](https://github.com/flintSpark/node-demo/actions/workflows/node.js.yml)
 
-A minimal Node.js demonstration repository equipped with an automated GitHub Actions CI pipeline.
+A production-ready Node.js & Express microservice featuring structured request logging, telemetry endpoints, graceful shutdown handling, and automated matrix CI/CD testing via GitHub Actions.
 
-## Features
+---
 
-- **Automated CI/CD:** Runs automated builds and tests on every push or pull request to `master` using GitHub Actions.
-- **Clean Structure:** Configured with a minimal `package.json` and strict dependency locking via `package-lock.json`.
+## ✨ Features
 
-## Prerequisites
+- **Express REST API:** Modular structure with custom request timing and error-handling middleware.
+- **Health & Telemetry Endpoints:** Includes `/health` and `/api/v1/system-info` routes for container health probes and system monitoring.
+- **Graceful Lifecycle Management:** Handles `SIGTERM` and `SIGINT` signals for clean server shutdowns and connection draining.
+- **Zero-Dependency Native Testing:** Built using Node's native `node:test` and `node:assert` modules.
+- **Multi-Version Matrix CI:** GitHub Actions workflow automatically builds and tests against Node.js `18.x`, `20.x`, and `22.x`.
 
-- [Node.js](https://nodejs.org/) (v20.x recommended)
-- [npm](https://www.npmjs.com/)
+---
 
-## Getting Started
+## 🚀 API Endpoints
 
-1. **Clone the repository:**
-   ```bash
-   git clone [https://github.com/flintSpark/node-demo.git](https://github.com/flintSpark/node-demo.git)
-   cd node-demo
-Install dependencies:
+| Method | Endpoint | Description | Sample Response |
+| :--- | :--- | :--- | :--- |
+| `GET` | `/health` | Service uptime and status probe | `{"status": "UP", "uptime": 14.2}` |
+| `GET` | `/api/v1/system-info` | Node environment and memory metrics | `{"nodeVersion": "v20.x", "platform": "linux"}` |
 
-Bash
-npm ci
-Run tests:
+---
 
-Bash
-npm test
-Start the application:
+## 🛠️ Project Structure
 
-Bash
-npm start
-CI/CD Pipeline
-The GitHub Actions workflow is located at .github/workflows/node.js.yml. On every push to master, it automatically:
-
-Provisions an ubuntu-latest runner with Node.js 20.x.
-
-Installs clean project dependencies via npm ci.
-
-Executes the test suite via npm test.
-
-License
-Distributed under the MIT License. See LICENSE for details.
-.vscode/
-.idea/
+```text
+node-demo/
+├── .github/
+│   └── workflows/
+│       └── node.js.yml     # Multi-version CI matrix workflow
+├── src/
+│   └── app.js              # Express app, routes, and middleware
+├── test/
+│   └── app.test.js         # Native unit tests
+├── index.js                # Server entry point & graceful shutdown
+├── package.json            # Scripts & dependencies
+├── package-lock.json       # Dependency lockfile
+├── .gitignore
+├── LICENSE
+└── README.md
